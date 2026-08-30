@@ -12,6 +12,7 @@
 
 <title>【邦信】千秋梦 · 清商怨</title>
 
+
 <style>
 
     * {
@@ -19,7 +20,12 @@
     }
 
 
+    /* =========================
+       页面
+       ========================= */
+
     body {
+
         margin: 0;
 
         min-height: 100vh;
@@ -43,21 +49,27 @@
 
 
     .article-page {
+
         width: min(720px, 92%);
 
         margin: 0 auto;
     }
 
 
-    /* ===== 夜间模式按钮 ===== */
+    /* =========================
+       夜间模式按钮
+       ========================= */
 
     .theme-button {
+
         position: fixed;
 
         top: 25px;
+
         right: 25px;
 
         width: 42px;
+
         height: 42px;
 
         border: 1px solid
@@ -74,17 +86,23 @@
         cursor: pointer;
 
         transition: 0.3s;
+
+        z-index: 10;
     }
 
 
     .theme-button:hover {
+
         transform: rotate(20deg);
     }
 
 
-    /* ===== 标题 ===== */
+    /* =========================
+       标题
+       ========================= */
 
     header {
+
         text-align: center;
 
         margin-bottom: 70px;
@@ -92,6 +110,7 @@
 
 
     h1 {
+
         margin: 0;
 
         font-size: 38px;
@@ -105,6 +124,7 @@
 
 
     .date {
+
         margin-top: 18px;
 
         font-size: 12px;
@@ -116,6 +136,7 @@
 
 
     .divider {
+
         width: 60px;
 
         margin: 35px auto;
@@ -124,9 +145,12 @@
     }
 
 
-    /* ===== 正文 ===== */
+    /* =========================
+       正文
+       ========================= */
 
     .content {
+
         font-size: 16px;
 
         line-height: 2.4;
@@ -141,9 +165,52 @@
     }
 
 
-    /* ===== 返回文集 ===== */
+    /* =========================
+       评论区
+       ========================= */
+
+    .comments {
+
+        margin-top: 100px;
+
+        padding-top: 35px;
+
+        border-top: 1px solid
+            rgba(57, 75, 99, 0.25);
+    }
+
+
+    .comments-title {
+
+        text-align: center;
+
+        font-size: 18px;
+
+        letter-spacing: 5px;
+
+        color: #394B63;
+
+        margin-bottom: 30px;
+    }
+
+
+    .comments-divider {
+
+        width: 45px;
+
+        margin: 0 auto 45px;
+
+        border-top: 1px solid
+            rgba(57, 75, 99, 0.3);
+    }
+
+
+    /* =========================
+       返回文集
+       ========================= */
 
     .back {
+
         display: block;
 
         margin-top: 80px;
@@ -168,13 +235,14 @@
 
 
     .back:hover {
+
         letter-spacing: 6px;
     }
 
 
-    /* =================================
+    /* =========================
        夜间模式
-       ================================= */
+       ========================= */
 
     body.dark {
 
@@ -185,26 +253,51 @@
 
 
     body.dark h1 {
+
         color: #E2E0D8;
     }
 
 
     body.dark .date {
+
         color: #9BA6A8;
     }
 
 
     body.dark .divider {
+
         border-color: #8D9AA0;
     }
 
 
     body.dark .content {
+
         color: #D0D2CC;
     }
 
 
+    body.dark .comments {
+
+        border-color:
+            rgba(210, 215, 215, 0.2);
+    }
+
+
+    body.dark .comments-title {
+
+        color: #D8D8D2;
+    }
+
+
+    body.dark .comments-divider {
+
+        border-color:
+            rgba(210, 215, 215, 0.25);
+    }
+
+
     body.dark .back {
+
         color: #B7C0C2;
 
         border-color:
@@ -221,16 +314,20 @@
     }
 
 
-    /* ===== 手机端 ===== */
+    /* =========================
+       手机端
+       ========================= */
 
     @media (max-width: 600px) {
 
         body {
+
             padding: 50px 15px;
         }
 
 
         h1 {
+
             font-size: 30px;
 
             letter-spacing: 6px;
@@ -238,6 +335,7 @@
 
 
         .content {
+
             font-size: 15px;
 
             line-height: 2.2;
@@ -245,7 +343,9 @@
 
 
         .theme-button {
+
             top: 15px;
+
             right: 15px;
         }
 
@@ -259,7 +359,9 @@
 <body>
 
 ```
-<!-- 夜间模式按钮 -->
+<!-- =========================
+     夜间模式按钮
+     ========================= -->
 
 <button
     class="theme-button"
@@ -273,6 +375,10 @@
 
 <main class="article-page">
 
+
+    <!-- =========================
+         标题
+         ========================= -->
 
     <header>
 
@@ -290,13 +396,16 @@
     <!-- =========================
          文章正文
 
-         把 Word 正文直接粘贴到这里
-         ========================= -->
+         以后直接把 Word 正文
+         复制到这里即可。
 
+         不需要给每一段加 <p>。
+         ========================= -->
 
     <div class="content">
 ```
 
+【邦信】千秋岁
 /淮阴侯时期 我流邦信 非真实历史 有大量虚构内容切勿当真
 /包括不限于：双性 囚禁 控she 窒息
 /文笔有限 感谢阅读
@@ -349,7 +458,44 @@
     </div>
 
 
-    <!-- ===== 返回文集 ===== -->
+    <!-- =========================
+         评论区
+         ========================= -->
+
+    <section class="comments">
+
+        <div class="comments-title">
+            评论
+        </div>
+
+        <div class="comments-divider"></div>
+
+
+        <!-- Giscus -->
+
+        <script src="https://giscus.app/client.js"
+                data-repo="cijinzx/cijinzx.github.io"
+                data-repo-id="R_kgDOUIgNGw"
+                data-category="Announcements"
+                data-category-id="DIC_kwDOUIgNG84DEfmL"
+                data-mapping="title"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="bottom"
+                data-theme="light"
+                data-lang="zh-CN"
+                crossorigin="anonymous"
+                async>
+        </script>
+
+
+    </section>
+
+
+    <!-- =========================
+         返回文集
+         ========================= -->
 
     <a class="back" href="wenji.html">
         ← 返回文集
@@ -358,6 +504,10 @@
 
 </main>
 
+
+<!-- =========================
+     夜间模式 JavaScript
+     ========================= -->
 
 <script>
 
@@ -368,17 +518,54 @@
         const button =
             document.querySelector(".theme-button");
 
+
         if (
             document.body.classList.contains("dark")
         ) {
 
             button.textContent = "☀";
 
+            changeGiscusTheme("dark");
+
         } else {
 
             button.textContent = "☾";
 
+            changeGiscusTheme("light");
+
         }
+
+    }
+
+
+    /* =========================
+       Giscus 夜间模式同步
+       ========================= */
+
+    function changeGiscusTheme(theme) {
+
+        const iframe =
+            document.querySelector(
+                "iframe.giscus-frame"
+            );
+
+
+        if (!iframe) {
+
+            return;
+        }
+
+
+        iframe.contentWindow.postMessage(
+            {
+                giscus: {
+                    setConfig: {
+                        theme: theme
+                    }
+                }
+            },
+            "https://giscus.app"
+        );
 
     }
 
