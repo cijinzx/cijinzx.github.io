@@ -22,7 +22,7 @@
 
             background-color: #D0D1E6;
 
-            color: #394B63;
+            color: #26383B;
 
             font-family:
                 "Noto Serif SC",
@@ -37,6 +37,7 @@
             position: relative;
         }
 
+
         .container {
             width: min(760px, 90%);
             min-height: 80vh;
@@ -50,8 +51,12 @@
             position: relative;
         }
 
+
+        /* 左上角、右下角装饰 */
+
         .container::before,
         .container::after {
+
             content: "❖";
 
             position: absolute;
@@ -59,19 +64,30 @@
             font-size: 14px;
 
             color: #394B63;
+
         }
+
 
         .container::before {
+
             top: 18px;
             left: 22px;
+
         }
+
 
         .container::after {
+
             bottom: 18px;
             right: 22px;
+
         }
 
+
+        /* 标题 */
+
         h1 {
+
             margin: 0;
 
             font-size: 46px;
@@ -80,10 +96,15 @@
 
             letter-spacing: 12px;
 
-            color: #394B63;
+            color: #26383B;
+
         }
 
+
+        /* 副标题 */
+
         .subtitle {
+
             margin-top: 20px;
 
             font-size: 15px;
@@ -91,25 +112,38 @@
             letter-spacing: 6px;
 
             color: #647B80;
+
         }
 
+
+        /* 藏青色分隔线 */
+
         .divider {
+
             width: 80px;
 
             margin: 45px auto;
 
-            color: #394B63;
+            border-top: 1px solid #394B63;
+
         }
 
+
+        /* 菜单 */
+
         nav {
+
             display: flex;
 
             flex-direction: column;
 
             gap: 20px;
+
         }
 
+
         nav a {
+
             text-decoration: none;
 
             color: #354B4F;
@@ -119,15 +153,23 @@
             letter-spacing: 5px;
 
             transition: 0.3s;
+
         }
 
+
         nav a:hover {
+
             color: #394B63;
 
             letter-spacing: 8px;
+
         }
 
+
+        /* 藏青色印章 */
+
         .seal {
+
             margin-top: 60px;
 
             width: 55px;
@@ -136,9 +178,10 @@
             display: inline-flex;
 
             justify-content: center;
+
             align-items: center;
 
-            border-top: 1px solid #394B63;
+            border: 2px solid #394B63;
 
             color: #394B63;
 
@@ -147,32 +190,47 @@
             writing-mode: vertical-rl;
 
             letter-spacing: 2px;
+
         }
+
+
+        /* 手机端 */
 
         @media (max-width: 600px) {
 
             .container {
+
                 width: 88%;
 
                 min-height: 85vh;
 
                 padding: 60px 25px;
+
             }
 
+
             h1 {
+
                 font-size: 34px;
 
                 letter-spacing: 8px;
+
             }
 
+
             .subtitle {
+
                 font-size: 13px;
 
                 letter-spacing: 4px;
+
             }
 
+
             nav a {
+
                 font-size: 16px;
+
             }
 
         }
@@ -180,6 +238,7 @@
     </style>
 
 </head>
+
 
 <body>
 
