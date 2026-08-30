@@ -1,23 +1,14 @@
-/* =========================
-   一方小筑 · 青瓷水墨
-   ========================= */
-
 * {
     box-sizing: border-box;
-}
-
-html {
-    min-height: 100%;
 }
 
 body {
     margin: 0;
     min-height: 100vh;
 
-    /* 清雅的青蓝色 */
-    background-color: #d9e9e7;
+    background-color: #d8e8ed;
 
-    color: #263938;
+    color: #26383b;
 
     font-family:
         "Noto Serif SC",
@@ -32,7 +23,8 @@ body {
     position: relative;
 }
 
-/* 淡淡的宣纸感 */
+/* 淡淡的纸张纹理 */
+
 body::before {
     content: "";
 
@@ -44,8 +36,8 @@ body::before {
     background:
         repeating-linear-gradient(
             0deg,
-            rgba(50, 80, 78, 0.018) 0px,
-            rgba(50, 80, 78, 0.018) 1px,
+            rgba(50, 75, 80, 0.018) 0px,
+            rgba(50, 75, 80, 0.018) 1px,
             transparent 1px,
             transparent 5px
         );
@@ -53,29 +45,22 @@ body::before {
     opacity: 0.8;
 }
 
-/* =========================
-   中央内容
-   ========================= */
+/* 中央内容 */
 
 .container {
-    width: min(760px, 88%);
+    width: min(760px, 90%);
     min-height: 80vh;
 
     padding: 80px 60px;
 
     text-align: center;
 
-    border: 1px solid rgba(38, 57, 56, 0.3);
+    border: 1px solid rgba(38, 56, 59, 0.28);
 
     position: relative;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
-/* 四角的小朱印装饰 */
+/* 四角装饰 */
 
 .container::before,
 .container::after {
@@ -83,7 +68,7 @@ body::before {
 
     position: absolute;
 
-    font-size: 13px;
+    font-size: 14px;
 
     color: #8c3b3b;
 }
@@ -98,9 +83,7 @@ body::before {
     right: 22px;
 }
 
-/* =========================
-   网站标题
-   ========================= */
+/* 标题 */
 
 h1 {
     margin: 0;
@@ -111,12 +94,10 @@ h1 {
 
     letter-spacing: 12px;
 
-    color: #263938;
+    color: #26383b;
 }
 
-/* =========================
-   副标题
-   ========================= */
+/* 副标题 */
 
 .subtitle {
     margin-top: 20px;
@@ -125,12 +106,10 @@ h1 {
 
     letter-spacing: 6px;
 
-    color: #607a78;
+    color: #647b80;
 }
 
-/* =========================
-   分隔线
-   ========================= */
+/* 分隔线 */
 
 .divider {
     width: 80px;
@@ -140,9 +119,7 @@ h1 {
     border-top: 1px solid #8c3b3b;
 }
 
-/* =========================
-   导航
-   ========================= */
+/* 菜单 */
 
 nav {
     display: flex;
@@ -155,13 +132,13 @@ nav {
 nav a {
     text-decoration: none;
 
-    color: #354d4b;
+    color: #354b4f;
 
     font-size: 18px;
 
     letter-spacing: 5px;
 
-    transition: all 0.3s ease;
+    transition: 0.3s;
 }
 
 nav a:hover {
@@ -170,20 +147,18 @@ nav a:hover {
     letter-spacing: 8px;
 }
 
-/* =========================
-   朱砂印章
-   ========================= */
+/* 印章 */
 
 .seal {
     margin-top: 60px;
 
-    width: 55px;
-    height: 55px;
-
-    display: flex;
+    display: inline-flex;
 
     justify-content: center;
     align-items: center;
+
+    width: 55px;
+    height: 55px;
 
     border: 2px solid #8c3b3b;
 
@@ -196,12 +171,9 @@ nav a:hover {
     letter-spacing: 2px;
 }
 
-/* =========================
-   手机端
-   ========================= */
+/* 手机 */
 
 @media (max-width: 600px) {
-
     .container {
         width: 88%;
         min-height: 85vh;
@@ -211,13 +183,11 @@ nav a:hover {
 
     h1 {
         font-size: 34px;
-
         letter-spacing: 8px;
     }
 
     .subtitle {
         font-size: 13px;
-
         letter-spacing: 4px;
     }
 
