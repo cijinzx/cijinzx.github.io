@@ -1,1 +1,159 @@
+/* =========================
+   一方小筑 · 古风样式
+   ========================= */
 
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background:
+        linear-gradient(rgba(245, 240, 226, 0.94),
+                        rgba(245, 240, 226, 0.94)),
+        repeating-linear-gradient(
+            0deg,
+            rgba(90, 70, 45, 0.025) 0px,
+            rgba(90, 70, 45, 0.025) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+
+    color: #29251f;
+
+    font-family:
+        "Noto Serif SC",
+        "Songti SC",
+        "STSong",
+        serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: min(760px, 90%);
+    min-height: 80vh;
+
+    padding: 80px 60px;
+
+    text-align: center;
+
+    border: 1px solid rgba(70, 55, 40, 0.35);
+
+    position: relative;
+}
+
+/* 四角的小装饰 */
+
+.container::before,
+.container::after {
+    content: "❖";
+
+    position: absolute;
+
+    font-size: 14px;
+
+    color: #8b2929;
+}
+
+.container::before {
+    top: 18px;
+    left: 22px;
+}
+
+.container::after {
+    bottom: 18px;
+    right: 22px;
+}
+
+/* 标题 */
+
+h1 {
+    margin: 0;
+
+    font-size: 46px;
+
+    font-weight: 400;
+
+    letter-spacing: 12px;
+
+    color: #302a23;
+}
+
+/* 副标题 */
+
+.subtitle {
+    margin-top: 20px;
+
+    font-size: 15px;
+
+    letter-spacing: 6px;
+
+    color: #756b5c;
+}
+
+/* 分隔线 */
+
+.divider {
+    width: 80px;
+
+    margin: 45px auto;
+
+    border-top: 1px solid #8b2929;
+}
+
+/* 菜单 */
+
+nav {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+
+    color: #40382e;
+
+    font-size: 18px;
+
+    letter-spacing: 5px;
+
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #8b2929;
+
+    letter-spacing: 8px;
+}
+
+/* 印章 */
+
+.seal {
+    margin-top: 60px;
+
+    display: inline-flex;
+
+    justify-content: center;
+    align-items: center;
+
+    width: 55px;
+    height: 55px;
+
+    border: 2px solid #8b2929;
+
+    color: #8b2929;
+
+    font-size: 18px;
+
+    writing-mode: vertical-rl;
+
+    letter-spacing: 2px;
+}
