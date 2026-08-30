@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>清讴 · 清商怨</title>
+
+
+<style>
+
+    * {
+        box-sizing: border-box;
+    }
+
+
+    body {
+
+        margin: 0;
+
+        min-height: 100vh;
+
+        background-color: #D0D1E6;
+
+        color: #26383B;
+
+        font-family:
+            "Noto Serif SC",
+            "Songti SC",
+            "STSong",
+            serif;
+
+        padding: 70px 20px;
+    }
+
+
+    .page {
+
+        width: min(720px, 92%);
+
+        margin: 0 auto;
+    }
+
+
+    /* =========================
+       标题
+       ========================= */
+
+    header {
+
+        text-align: center;
+
+        margin-bottom: 60px;
+    }
+
+
+    h1 {
+
+        margin: 0;
+
+        font-size: 42px;
+
+        font-weight: 400;
+
+        letter-spacing: 12px;
+    }
+
+
+    .subtitle {
+
+        margin-top: 18px;
+
+        font-size: 14px;
+
+        letter-spacing: 5px;
+
+        color: #647B80;
+    }
+
+
+    .divider {
+
+        width: 60px;
+
+        margin: 35px auto;
+
+        border-top: 1px solid #394B63;
+    }
+
+
+    /* =========================
+       投稿区域
+       ========================= */
+
+    .share {
+
+        padding: 30px;
+
+        border: 1px solid
+            rgba(57, 75, 99, 0.25);
+
+        margin-bottom: 70px;
+    }
+
+
+    .share-title {
+
+        text-align: center;
+
+        font-size: 18px;
+
+        letter-spacing: 4px;
+
+        margin-bottom: 30px;
+    }
+
+
+    label {
+
+        display: block;
+
+        margin-bottom: 8px;
+
+        font-size: 13px;
+
+        letter-spacing: 2px;
+
+        color: #647B80;
+    }
+
+
+    input,
+    textarea {
+
+        width: 100%;
+
+        padding: 12px 10px;
+
+        margin-bottom: 22px;
+
+        border: none;
+
+        border-bottom: 1px solid
+            rgba(57, 75, 99, 0.35);
+
+        background: transparent;
+
+        color: #26383B;
+
+        font-family: inherit;
+
+        font-size: 14px;
+
+        outline: none;
+    }
+
+
+    textarea {
+
+        min-height: 90px;
+
+        resize: vertical;
+
+        line-height: 1.8;
+    }
+
+
+    input:focus,
+    textarea:focus {
+
+        border-bottom-color: #394B63;
+    }
+
+
+    button {
+
+        display: block;
+
+        margin: 10px auto 0;
+
+        padding: 10px 28px;
+
+        border: 1px solid #394B63;
+
+        background: transparent;
+
+        color: #394B63;
+
+        font-family: inherit;
+
+        letter-spacing: 3px;
+
+        cursor: pointer;
+
+        transition: 0.3s;
+    }
+
+
+    button:hover {
+
+        background: #394B63;
+
+        color: #D0D1E6;
+    }
+
+
+    #message {
+
+        text-align: center;
+
+        margin-top: 18px;
+
+        font-size: 13px;
+
+        color: #647B80;
+    }
+
+
+    /* =========================
+       歌曲列表
+       ========================= */
+
+    .songs-title {
+
+        text-align: center;
+
+        font-size: 18px;
+
+        letter-spacing: 5px;
+
+        margin-bottom: 35px;
+    }
+
+
+    .song {
+
+        padding: 25px 10px;
+
+        border-bottom: 1px solid
+            rgba(57, 75, 99, 0.25);
+    }
+
+
+    .song:first-child {
+
+        border-top: 1px solid
+            rgba(57, 75, 99, 0.25);
+    }
+
+
+    .song-title {
+
+        font-size: 19px;
+
+        letter-spacing: 3px;
+
+        margin-bottom: 8px;
+    }
+
+
+    .song-artist {
+
+        font-size: 13px;
+
+        color: #647B80;
+
+        letter-spacing: 2px;
+
+        margin-bottom: 15px;
+    }
+
+
+    .song-description {
+
+        font-size: 14px;
+
+        line-height: 2;
+
+        color: #53696D;
+
+        white-space: pre-line;
+
+        margin-bottom: 15px;
+    }
+
+
+    .song-link {
+
+        color: #394B63;
+
+        text-decoration: none;
+
+        font-size: 13px;
+
+        letter-spacing: 2px;
+    }
+
+
+    .song-link:hover {
+
+        text-decoration: underline;
+    }
+
+
+    .empty {
+
+        text-align: center;
+
+        padding: 30px;
+
+        color: #647B80;
+
+        font-size: 14px;
+
+        letter-spacing: 2px;
+    }
+
+
+    /* =========================
+       返回首页
+       ========================= */
+
+    .back {
+
+        display: block;
+
+        margin-top: 70px;
+
+        text-align: center;
+
+        color: #394B63;
+
+        text-decoration: none;
+
+        font-size: 14px;
+
+        letter-spacing: 4px;
+    }
+
+
+    .back:hover {
+
+        letter-spacing: 6px;
+    }
+
+
+    /* =========================
+       手机端
+       ========================= */
+
+    @media (max-width: 600px) {
+
+        body {
+
+            padding: 50px 15px;
+        }
+
+
+        h1 {
+
+            font-size: 34px;
+
+            letter-spacing: 8px;
+        }
+
+
+        .share {
+
+            padding: 22px;
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<main class="page">
+
+
+    <header>
+
+        <h1>清讴</h1>
+
+        <div class="subtitle">
+            高山流水
+        </div>
+
+        <div class="divider"></div>
+
+    </header>
+
+
+    <!-- =========================
+         分享歌曲
+         ========================= -->
+
+    <section class="share">
+
+        <div class="share-title">
+            分享一首歌
+        </div>
+
+
+        <form id="songForm">
+
+
+            <label for="title">
+                歌名
+            </label>
+
+            <input
+                id="title"
+                type="text"
+                required
+                maxlength="100"
+                placeholder="请输入歌名">
+
+
+            <label for="artist">
+                歌手
+            </label>
+
+            <input
+                id="artist"
+                type="text"
+                required
+                maxlength="100"
+                placeholder="请输入歌手">
+
+
+            <label for="url">
+                歌曲链接
+            </label>
+
+            <input
+                id="url"
+                type="url"
+                required
+                maxlength="500"
+                placeholder="https://...">
+
+
+            <label for="description">
+                推荐语
+            </label>
+
+            <textarea
+                id="description"
+                maxlength="500"
+                placeholder="为什么想分享这首歌？"></textarea>
+
+
+            <button type="submit">
+                分享
+            </button>
+
+
+            <div id="message"></div>
+
+
+        </form>
+
+    </section>
+
+
+    <!-- =========================
+         歌曲列表
+         ========================= -->
+
+    <section>
+
+        <div class="songs-title">
+            已分享
+        </div>
+
+
+        <div id="songsList">
+
+            <div class="empty">
+                正在读取歌曲……
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         返回首页
+         ========================= -->
+
+    <a class="back" href="index.html">
+        ← 返回清商怨
+    </a>
+
+
+</main>
+
+
+<!-- =========================
+     Supabase
+     ========================= -->
+
+<script>
+
+    const SUPABASE_URL =
+        "https://zwygnshcpimvluglmstn.supabase.co";
+
+
+    const SUPABASE_KEY =
+        "sb_publishable_RKR5pejAKJ7tM2BEbFP6BA_cWBOE-YQ";
+
+
+    async function loadSongs() {
+
+        const list =
+            document.getElementById("songsList");
+
+
+        try {
+
+            const response = await fetch(
+                SUPABASE_URL +
+                "/rest/v1/songs" +
+                "?select=*" +
+                "&order=created_at.desc",
+                {
+
+                    headers: {
+
+                        "apikey": SUPABASE_KEY,
+
+                        "Authorization":
+                            "Bearer " + SUPABASE_KEY
+
+                    }
+
+                }
+            );
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "无法读取歌曲"
+                );
+
+            }
+
+
+            const songs =
+                await response.json();
+
+
+            if (songs.length === 0) {
+
+                list.innerHTML =
+                    '<div class="empty">' +
+                    '暂无歌曲，来分享第一首吧。' +
+                    '</div>';
+
+                return;
+            }
+
+
+            list.innerHTML = "";
+
+
+            songs.forEach(song => {
+
+                const article =
+                    document.createElement("article");
+
+                article.className = "song";
+
+
+                const title =
+                    document.createElement("div");
+
+                title.className = "song-title";
+
+                title.textContent =
+                    song.title;
+
+
+                const artist =
+                    document.createElement("div");
+
+                artist.className = "song-artist";
+
+                artist.textContent =
+                    song.artist;
+
+
+                const description =
+                    document.createElement("div");
+
+                description.className =
+                    "song-description";
+
+                description.textContent =
+                    song.description || "";
+
+
+                const link =
+                    document.createElement("a");
+
+                link.className = "song-link";
+
+                link.href = song.url;
+
+                link.target = "_blank";
+
+                link.rel = "noopener noreferrer";
+
+                link.textContent =
+                    "↗ 打开歌曲";
+
+
+                article.appendChild(title);
+
+                article.appendChild(artist);
+
+                if (song.description) {
+
+                    article.appendChild(
+                        description
+                    );
+
+                }
+
+                article.appendChild(link);
+
+
+                list.appendChild(article);
+
+            });
+
+        } catch (error) {
+
+            list.innerHTML =
+                '<div class="empty">' +
+                '暂时无法读取歌曲。' +
+                '</div>';
+
+            console.error(error);
+
+        }
+
+    }
+
+
+    document
+        .getElementById("songForm")
+        .addEventListener(
+            "submit",
+            async function(event) {
+
+                event.preventDefault();
+
+
+                const message =
+                    document.getElementById(
+                        "message"
+                    );
+
+
+                const title =
+                    document
+                    .getElementById("title")
+                    .value
+                    .trim();
+
+
+                const artist =
+                    document
+                    .getElementById("artist")
+                    .value
+                    .trim();
+
+
+                const url =
+                    document
+                    .getElementById("url")
+                    .value
+                    .trim();
+
+
+                const description =
+                    document
+                    .getElementById(
+                        "description"
+                    )
+                    .value
+                    .trim();
+
+
+                message.textContent =
+                    "正在分享……";
+
+
+                try {
+
+                    const response =
+                        await fetch(
+                            SUPABASE_URL +
+                            "/rest/v1/songs",
+                            {
+
+                                method: "POST",
+
+                                headers: {
+
+                                    "Content-Type":
+                                        "application/json",
+
+                                    "apikey":
+                                        SUPABASE_KEY,
+
+                                    "Authorization":
+                                        "Bearer " +
+                                        SUPABASE_KEY,
+
+                                    "Prefer":
+                                        "return=minimal"
+
+                                },
+
+                                body:
+                                    JSON.stringify({
+
+                                        title:
+                                            title,
+
+                                        artist:
+                                            artist,
+
+                                        url:
+                                            url,
+
+                                        description:
+                                            description
+
+                                    })
+
+                            }
+                        );
+
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            "投稿失败"
+                        );
+
+                    }
+
+
+                    message.textContent =
+                        "已分享，谢谢你的推荐。";
+
+
+                    document
+                        .getElementById(
+                            "songForm"
+                        )
+                        .reset();
+
+
+                    loadSongs();
+
+
+                } catch (error) {
+
+                    message.textContent =
+                        "分享失败，请稍后再试。";
+
+                    console.error(error);
+
+                }
+
+            }
+        );
+
+
+    loadSongs();
+
+</script>
+```
+
+</body>
+
+</html>
