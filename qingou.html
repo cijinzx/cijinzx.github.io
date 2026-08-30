@@ -512,14 +512,22 @@
      Supabase
      ========================= -->
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
 
     const SUPABASE_URL =
         "https://zwygnshcpimvluglmstn.supabase.co";
 
-
     const SUPABASE_KEY =
         "sb_publishable_RKR5pejAKJ7tM2BEbFP6BA_cWBOE-YQ";
+
+
+    const supabase =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
 
 
     async function loadSongs() {
@@ -528,80 +536,77 @@
             document.getElementById("songsList");
 
 
-        try {
-
-            const response = await fetch(
-                SUPABASE_URL +
-                "/rest/v1/songs" +
-                "?select=*" +
-                "&order=created_at.desc",
-                {
-
-                    headers: {
-
-                        "apikey": SUPABASE_KEY,
-
-                        "Authorization":
-                            "Bearer " + SUPABASE_KEY
-
-                    }
-
-                }
+        const {
+            data,
+            error
+        } = await supabase
+            .from("songs")
+            .select("*")
+            .order(
+                "created_at",
+                { ascending: false }
             );
 
 
-            if (!response.ok) {
+        if (error) {
 
-                throw new Error(
-                    "无法读取歌曲"
-                );
+            console.error(error);
 
-            }
+            list.innerHTML =
+                '<div class="empty">' +
+                '暂时无法读取歌曲。' +
+                '</div>';
 
-
-            const songs =
-                await response.json();
-
-
-            if (songs.length === 0) {
-
-                list.innerHTML =
-                    '<div class="empty">' +
-                    '暂无歌曲，来分享第一首吧。' +
-                    '</div>';
-
-                return;
-            }
+            return;
+        }
 
 
-            list.innerHTML = "";
+        if (!data || data.length === 0) {
+
+            list.innerHTML =
+                '<div class="empty">' +
+                '暂无歌曲，来分享第一首吧。' +
+                '</div>';
+
+            return;
+        }
 
 
-            songs.forEach(song => {
-
-                const article =
-                    document.createElement("article");
-
-                article.className = "song";
+        list.innerHTML = "";
 
 
-                const title =
-                    document.createElement("div");
+        data.forEach(song => {
 
-                title.className = "song-title";
+            const article =
+                document.createElement("article");
 
-                title.textContent =
-                    song.title;
+            article.className = "song";
 
 
-                const artist =
-                    document.createElement("div");
+            const title =
+                document.createElement("div");
 
-                artist.className = "song-artist";
+            title.className = "song-title";
 
-                artist.textContent =
-                    song.artist;
+            title.textContent =
+                song.title;
 
+
+            const artist =
+                document.createElement("div");
+
+            artist.className = "song-artist";
+
+            artist.textContent =
+                song.artist;
+
+
+            article.appendChild(title);
+
+            article.appendChild(artist);
+
+
+            if (song.description) {
 
                 const description =
                     document.createElement("div");
@@ -610,53 +615,35 @@
                     "song-description";
 
                 description.textContent =
-                    song.description || "";
+                    song.description;
+
+                article.appendChild(
+                    description
+                );
+            }
 
 
-                const link =
-                    document.createElement("a");
+            const link =
+                document.createElement("a");
 
-                link.className = "song-link";
+            link.className = "song-link";
 
-                link.href = song.url;
+            link.href = song.url;
 
-                link.target = "_blank";
+            link.target = "_blank";
 
-                link.rel = "noopener noreferrer";
+            link.rel =
+                "noopener noreferrer";
 
-                link.textContent =
-                    "↗ 打开歌曲";
-
-
-                article.appendChild(title);
-
-                article.appendChild(artist);
-
-                if (song.description) {
-
-                    article.appendChild(
-                        description
-                    );
-
-                }
-
-                article.appendChild(link);
+            link.textContent =
+                "↗ 打开歌曲";
 
 
-                list.appendChild(article);
+            article.appendChild(link);
 
-            });
+            list.appendChild(article);
 
-        } catch (error) {
-
-            list.innerHTML =
-                '<div class="empty">' +
-                '暂时无法读取歌曲。' +
-                '</div>';
-
-            console.error(error);
-
-        }
+        });
 
     }
 
@@ -710,85 +697,48 @@
                     "正在分享……";
 
 
-                try {
+                const {
+                    error
+                } = await supabase
+                    .from("songs")
+                    .insert({
 
-                    const response =
-                        await fetch(
-                            SUPABASE_URL +
-                            "/rest/v1/songs",
-                            {
+                        title:
+                            title,
 
-                                method: "POST",
+                        artist:
+                            artist,
 
-                                headers: {
+                        url:
+                            url,
 
-                                    "Content-Type":
-                                        "application/json",
+                        description:
+                            description
 
-                                    "apikey":
-                                        SUPABASE_KEY,
-
-                                    "Authorization":
-                                        "Bearer " +
-                                        SUPABASE_KEY,
-
-                                    "Prefer":
-                                        "return=minimal"
-
-                                },
-
-                                body:
-                                    JSON.stringify({
-
-                                        title:
-                                            title,
-
-                                        artist:
-                                            artist,
-
-                                        url:
-                                            url,
-
-                                        description:
-                                            description
-
-                                    })
-
-                            }
-                        );
+                    });
 
 
-                    if (!response.ok) {
+                if (error) {
 
-                        throw new Error(
-                            "投稿失败"
-                        );
-
-                    }
-
-
-                    message.textContent =
-                        "已分享，谢谢你的推荐。";
-
-
-                    document
-                        .getElementById(
-                            "songForm"
-                        )
-                        .reset();
-
-
-                    loadSongs();
-
-
-                } catch (error) {
+                    console.error(error);
 
                     message.textContent =
                         "分享失败，请稍后再试。";
 
-                    console.error(error);
-
+                    return;
                 }
+
+
+                message.textContent =
+                    "已分享，谢谢你的推荐。";
+
+
+                document
+                    .getElementById("songForm")
+                    .reset();
+
+
+                loadSongs();
 
             }
         );
@@ -797,6 +747,7 @@
     loadSongs();
 
 </script>
+
 ```
 
 </body>
